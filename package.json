@@ -1,0 +1,20 @@
+{
+  "name": "gatekeeper",
+  "version": "1.0.0",
+  "description": "Sample Module Repository ========================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:run": "nodemon --ext py,rb  --watch gatekeeper  --exec python -m gatekeeper"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://liuzhongtao@git.innotechx.com/scm/~liuzhongtao/gatekeeper.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

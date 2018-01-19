@@ -1,0 +1,136 @@
+ssh ec2-user@adcbeta.hemin.im（待定）
+ssh ec2-user@13.113.19.78（待定）
+ssh ec2-user@ec2-13-230-254-55.ap-northeast-1.compute.amazonaws.com
+
+ssh ec2-user@52.199.222.93(测试服务器)
+ssh ec2-user@nbbeta.hemin.im(测试服务器)
+同一个服务器
+
+(测试数据库)
+host: 'dev02.cmjwzbzhppgn.us-west-1.rds.amazonaws.com',
+user: 'root',
+password: 'R%LKsIJF412',
+database: 'AdClickTool',
+
+(列存储服务器 测试)
+host: 'ec2-18-220-153-39.us-east-2.compute.amazonaws.com',
+user: 'dev',
+password: '55Te$ydFq',
+database: 'AdClickTool',
+
+
+ssh ec2-user@ec2-52-14-148-52.us-east-2.compute.amazonaws.com
+
+redis
+"host": "adclick-jp-001.082pif.0001.apne1.cache.amazonaws.com,
+"port": "6379",
+
+
+正式服务器（node部分）
+ssh ec2-user@adcjp001.hemin.im
+ssh ec2-user@adcuse001.hemin.im
+ssh ec2-user@adcsg001.hemin.im
+ssh ec2-user@adceu001.hemin.im
+
+
+[rule 服务器]
+ssh ec2-user@ec2-18-217-164-220.us-east-2.compute.amazonaws.com
+
+
+[go服务器]
+ssh ec2-user@adcjp001.hemin.im
+
+ssh ec2-user@adcsg001.hemin.im
+
+ssh ec2-user@adceu001.hemin.im
+
+ssh ec2-user@adcuse001.hemin.im
+
+ssh ec2-user@adcusw001.hemin.im
+
+ssh ec2-user@adcbr001.hemin.im
+
+正式服务器（python部分）
+ssh ec2-user@ec2-18-217-164-220.us-east-2.compute.amazonaws.com
+
+列存储服务器（新地址）
+ssh ec2-user@ec2-18-221-69-129.us-east-2.compute.amazonaws.com
+
+设置
+SET GLOBAL sort_buffer_size = 1024*1024; 
+SET GLOBAL max_allowed_packet = 1024*1024*100;
+SET GLOBAL max_length_for_sort_data = 10240000;
+SET GLOBAL max_connections = 1000;
+SET GLOBAL interactive_timeout=500;
+SET GLOBAL wait_timeout=500;
+SET GLOBAL net_buffer_length = 200000;
+FLUSH  PRIVILEGES ;
+
+SHOW GLOBAL VARIABLES;
+show processlist;
+
+正式数据库
+"name": "AdClickTool",
+"host": 'trackingdb02.col8oozqk3ay.us-east-2.rds.amazonaws.com',
+"user": 'root',
+"port": "3306",
+"passwd": 'Bb%S%f0patT5',
+"connectionLimit": 1000
+
+统计数据
+"name": "AdClickTool2",
+"host": "ec2-52-14-148-52.us-east-2.compute.amazonaws.com",//新地址
+"port": "3306",
+"user": "dev",
+"passwd": "55Te$ydFq"
+
+
+redis
+"host": "eventcache.bq8jfj.ng.0001.use2.cache.amazonaws.com",
+"port": "6379",
+
+官网
+ssh ec2-user@ec2-52-199-222-93.ap-northeast-1.compute.amazonaws.com
+目录 /adeaz/sites/webs/www.newbidder.com/code/
+
+
+[go tracking数据库]
+host: clickdetaildb2.col8oozqk3ay.us-east-2.rds.amazonaws.com
+user: root
+pass: CIfds5#iFD 
+port: 3306
+dbname: Cache
+
+[亚马逊服务器]
+aws的账号密码 monitor@aztechx.com 密码：P@ssword4XSP
+
+
+find . -name * | xargs rm -rf *
+
+
+张剑:
+存MySQL cacheevent部署在美国东部俄亥俄： 名称eventcache, IP： ssh ec2-user@13.59.75.37实例上
+张剑:
+wudi你的ssh加上了
+张剑:
+目录是/home/ec2-user/redis
+
+
+nohup ./bin/trkstream-redis-sm -f ./config/conf.stream.yml > cache.log 2>&1 & (在python服务器上)
+nohup ./trkstream-cache -f conf.cache.yml > cache.log 2>&1 &
+
+nohup ./bin/trkpostback3 -f ./config/conf.postback2.yml > ../log/postback2.log 2>&1 &
+
+
+bin/kafka-console-consumer.sh  --zookeeper localhost:2181 --bootstrap-server localhost:9092 --topic trk-event 
+
+bin/kafka-server-start.sh config/server.properties &
+bin/zookeeper-server-start.sh config/zookeeper.properties &
+
+ssh ec2-user@ec2-18-216-161-240.us-east-2.compute.amazonaws.com
+
+export PATH=
+
+
+offerlist port : 18088
+

@@ -1,0 +1,356 @@
+2017-12-15 11:01:37 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 78, in run_task
+    raise Exception('this Affiliate does not support right now')
+Exception: this Affiliate does not support right now
+
+2017-12-15 11:02:26 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 67, in run_task
+    globals()[tan.name + 'Work'](taskId=task.id,
+KeyError: 'ClickdealerWork'
+
+2017-12-15 11:05:05 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 68, in run_task
+    globals()[tan.name + 'Work'](taskId=task.id,
+KeyError: 'ClickdealerWork'
+
+2017-12-15 12:26:35 
+Traceback (most recent call last):
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 112, in execute
+    result = self._query(query)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 230, in _query
+    conn.query(q)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 607, in query
+    self._affected_rows = self._read_query_result()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 691, in _read_query_result
+    result.read()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 873, in read
+    self._read_ok_packet()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 880, in _read_ok_packet
+    self.insert_id = self.first_packet.read_length_coded_binary()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 292, in read_length_coded_binary
+    return unpack_int24(self.read(UNSIGNED_INT24_LENGTH))
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 161, in unpack_int24
+    return struct.unpack('B',n[0])[0] + (struct.unpack('B', n[1])[0] << 8) +\
+TypeError: a bytes-like object is required, not 'int'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/avazu.py", line 47, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2892, in _execute
+    return self.database.execute_sql(sql, params, self.require_commit)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3748, in execute_sql
+    cursor.execute(sql, params or ())
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 117, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 187, in defaulterrorhandler
+    raise Error(errorclass, errorvalue)
+pymysql.err.Error: (<class 'TypeError'>, TypeError("a bytes-like object is required, not 'int'",))
+
+2017-12-15 13:53:36 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 30, in start
+    root = parse(raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 1196, in parse
+    tree.parse(source, parser)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 586, in parse
+    source = open(source, "rb")
+OSError: [Errno 63] File name too long: '<?xml version="1.0" encoding="utf-8"?>\n<offer_feed_response xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cakemarketing.com/affiliates/api/4/">\r\n  <success>true</success>\r\n  <row_count>4</row_count>\r\n  <offers>\r\n    <offer>\r\n      <offer_id>12320</offer_id>\r\n      <offer_contract_id>13968</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB] QuickFlirt /FR 25+ DOI</offer_name>\r\n      <vertical_name>Casual dating</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$3.75</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_34a55a74678ea0f46a185478d3410ed5.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/12320.png</thumbnail_image_url>\r\n      <description>HOT NEW dating site with a huge conversion potential!\r\n\r\nPixel fires on email confirmation.</description>\r\n      <restrictions>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>12360</offer_id>\r\n      <offer_contract_id>14010</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>Mobile TV /IN - Airtel</offer_name>\r\n      <vertical_name>Mobile content</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$0.64</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://162.243.217.139/sub1/index.php</preview_link>\r\n      <thumbnail_image_url />\r\n      <description>Post subscribing the user can watch tv channels and videos which are offered in the product. \r\n\r\nCarrier: Airtel\r\n\r\nFlow: The user lands on the consent page post clicking on the URL, where he or she is informed about the type of service and the pricepoint. The user has to just click on the "Yes" button on the landing page. </description>\r\n      <restrictions>Geo: India\r\n1) OS targeting: Android\r\n2) Browser exclusion: Safari, Blackberry, Opera, SEMC\r\n\r\nNo adult and incentive</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms />\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>42271</offer_id>\r\n      <offer_contract_id>52154</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB+MOB] 123 Movies /International (50 GEOs)</offer_name>\r\n      <vertical_name>Entertainment</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$20.80</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_3e9282bdb088e3b0817cea25f81b6662.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/42271.jpg</thumbnail_image_url>\r\n      <description>Start watching videos instantly!\r\nFlow: Credit card Submit</description>\r\n      <restrictions>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>44110</offer_id>\r\n      <offer_contract_id>54634</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[MOB] 123SexStream /GR - [Cosmote, Vodafone, Wind]</offer_name>\r\n      <vertical_name>Erotic content, Carrier Billing</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$2.40</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link />\r\n      <thumbnail_image_url />\r\n      <description>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n</description>\r\n      <restrictions>X Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n\r\nX Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n  </offers>\r\n</offer_feed_response>'
+
+2017-12-15 13:54:21 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 30, in start
+    root = parse(raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 1196, in parse
+    tree.parse(source, parser)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 586, in parse
+    source = open(source, "rb")
+OSError: [Errno 63] File name too long: '<?xml version="1.0" encoding="utf-8"?>\n<offer_feed_response xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cakemarketing.com/affiliates/api/4/">\r\n  <success>true</success>\r\n  <row_count>4</row_count>\r\n  <offers>\r\n    <offer>\r\n      <offer_id>12320</offer_id>\r\n      <offer_contract_id>13968</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB] QuickFlirt /FR 25+ DOI</offer_name>\r\n      <vertical_name>Casual dating</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$3.75</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_34a55a74678ea0f46a185478d3410ed5.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/12320.png</thumbnail_image_url>\r\n      <description>HOT NEW dating site with a huge conversion potential!\r\n\r\nPixel fires on email confirmation.</description>\r\n      <restrictions>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>12360</offer_id>\r\n      <offer_contract_id>14010</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>Mobile TV /IN - Airtel</offer_name>\r\n      <vertical_name>Mobile content</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$0.64</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://162.243.217.139/sub1/index.php</preview_link>\r\n      <thumbnail_image_url />\r\n      <description>Post subscribing the user can watch tv channels and videos which are offered in the product. \r\n\r\nCarrier: Airtel\r\n\r\nFlow: The user lands on the consent page post clicking on the URL, where he or she is informed about the type of service and the pricepoint. The user has to just click on the "Yes" button on the landing page. </description>\r\n      <restrictions>Geo: India\r\n1) OS targeting: Android\r\n2) Browser exclusion: Safari, Blackberry, Opera, SEMC\r\n\r\nNo adult and incentive</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms />\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>42271</offer_id>\r\n      <offer_contract_id>52154</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB+MOB] 123 Movies /International (50 GEOs)</offer_name>\r\n      <vertical_name>Entertainment</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$20.80</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_3e9282bdb088e3b0817cea25f81b6662.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/42271.jpg</thumbnail_image_url>\r\n      <description>Start watching videos instantly!\r\nFlow: Credit card Submit</description>\r\n      <restrictions>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>44110</offer_id>\r\n      <offer_contract_id>54634</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[MOB] 123SexStream /GR - [Cosmote, Vodafone, Wind]</offer_name>\r\n      <vertical_name>Erotic content, Carrier Billing</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$2.40</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link />\r\n      <thumbnail_image_url />\r\n      <description>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n</description>\r\n      <restrictions>X Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n\r\nX Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n  </offers>\r\n</offer_feed_response>'
+
+2017-12-15 13:55:46 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 30, in start
+    root = parse(raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 1196, in parse
+    tree.parse(source, parser)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 586, in parse
+    source = open(source, "rb")
+OSError: [Errno 63] File name too long: '<?xml version="1.0" encoding="utf-8"?>\n<offer_feed_response xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cakemarketing.com/affiliates/api/4/">\r\n  <success>true</success>\r\n  <row_count>4</row_count>\r\n  <offers>\r\n    <offer>\r\n      <offer_id>12320</offer_id>\r\n      <offer_contract_id>13968</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB] QuickFlirt /FR 25+ DOI</offer_name>\r\n      <vertical_name>Casual dating</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$3.75</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_34a55a74678ea0f46a185478d3410ed5.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/12320.png</thumbnail_image_url>\r\n      <description>HOT NEW dating site with a huge conversion potential!\r\n\r\nPixel fires on email confirmation.</description>\r\n      <restrictions>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>12360</offer_id>\r\n      <offer_contract_id>14010</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>Mobile TV /IN - Airtel</offer_name>\r\n      <vertical_name>Mobile content</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$0.64</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://162.243.217.139/sub1/index.php</preview_link>\r\n      <thumbnail_image_url />\r\n      <description>Post subscribing the user can watch tv channels and videos which are offered in the product. \r\n\r\nCarrier: Airtel\r\n\r\nFlow: The user lands on the consent page post clicking on the URL, where he or she is informed about the type of service and the pricepoint. The user has to just click on the "Yes" button on the landing page. </description>\r\n      <restrictions>Geo: India\r\n1) OS targeting: Android\r\n2) Browser exclusion: Safari, Blackberry, Opera, SEMC\r\n\r\nNo adult and incentive</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms />\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>42271</offer_id>\r\n      <offer_contract_id>52154</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB+MOB] 123 Movies /International (50 GEOs)</offer_name>\r\n      <vertical_name>Entertainment</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$20.80</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_3e9282bdb088e3b0817cea25f81b6662.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/42271.jpg</thumbnail_image_url>\r\n      <description>Start watching videos instantly!\r\nFlow: Credit card Submit</description>\r\n      <restrictions>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>44110</offer_id>\r\n      <offer_contract_id>54634</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[MOB] 123SexStream /GR - [Cosmote, Vodafone, Wind]</offer_name>\r\n      <vertical_name>Erotic content, Carrier Billing</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$2.40</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link />\r\n      <thumbnail_image_url />\r\n      <description>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n</description>\r\n      <restrictions>X Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n\r\nX Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n  </offers>\r\n</offer_feed_response>'
+
+2017-12-15 14:10:03 
+Traceback (most recent call last):
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 112, in execute
+    result = self._query(query)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 230, in _query
+    conn.query(q)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 607, in query
+    self._affected_rows = self._read_query_result()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 691, in _read_query_result
+    result.read()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 873, in read
+    self._read_ok_packet()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 880, in _read_ok_packet
+    self.insert_id = self.first_packet.read_length_coded_binary()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 292, in read_length_coded_binary
+    return unpack_int24(self.read(UNSIGNED_INT24_LENGTH))
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 161, in unpack_int24
+    return struct.unpack('B',n[0])[0] + (struct.unpack('B', n[1])[0] << 8) +\
+TypeError: a bytes-like object is required, not 'int'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/mobidea.py", line 83, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2892, in _execute
+    return self.database.execute_sql(sql, params, self.require_commit)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3748, in execute_sql
+    cursor.execute(sql, params or ())
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 117, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 187, in defaulterrorhandler
+    raise Error(errorclass, errorvalue)
+pymysql.err.Error: (<class 'TypeError'>, TypeError("a bytes-like object is required, not 'int'",))
+
+2017-12-15 14:10:48 
+Traceback (most recent call last):
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 112, in execute
+    result = self._query(query)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 230, in _query
+    conn.query(q)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 607, in query
+    self._affected_rows = self._read_query_result()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 691, in _read_query_result
+    result.read()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 873, in read
+    self._read_ok_packet()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 880, in _read_ok_packet
+    self.insert_id = self.first_packet.read_length_coded_binary()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 292, in read_length_coded_binary
+    return unpack_int24(self.read(UNSIGNED_INT24_LENGTH))
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 161, in unpack_int24
+    return struct.unpack('B',n[0])[0] + (struct.unpack('B', n[1])[0] << 8) +\
+TypeError: a bytes-like object is required, not 'int'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/mobidea.py", line 83, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2892, in _execute
+    return self.database.execute_sql(sql, params, self.require_commit)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3748, in execute_sql
+    cursor.execute(sql, params or ())
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 117, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 187, in defaulterrorhandler
+    raise Error(errorclass, errorvalue)
+pymysql.err.Error: (<class 'TypeError'>, TypeError("a bytes-like object is required, not 'int'",))
+
+2017-12-15 14:15:34 
+Traceback (most recent call last):
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 112, in execute
+    result = self._query(query)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 230, in _query
+    conn.query(q)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 607, in query
+    self._affected_rows = self._read_query_result()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 691, in _read_query_result
+    result.read()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 873, in read
+    self._read_ok_packet()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 880, in _read_ok_packet
+    self.insert_id = self.first_packet.read_length_coded_binary()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 292, in read_length_coded_binary
+    return unpack_int24(self.read(UNSIGNED_INT24_LENGTH))
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 161, in unpack_int24
+    return struct.unpack('B',n[0])[0] + (struct.unpack('B', n[1])[0] << 8) +\
+TypeError: a bytes-like object is required, not 'int'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/mobidea.py", line 83, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2892, in _execute
+    return self.database.execute_sql(sql, params, self.require_commit)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3748, in execute_sql
+    cursor.execute(sql, params or ())
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 117, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 187, in defaulterrorhandler
+    raise Error(errorclass, errorvalue)
+pymysql.err.Error: (<class 'TypeError'>, TypeError("a bytes-like object is required, not 'int'",))
+
+2017-12-15 14:16:01 
+Traceback (most recent call last):
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 112, in execute
+    result = self._query(query)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 230, in _query
+    conn.query(q)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 607, in query
+    self._affected_rows = self._read_query_result()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 691, in _read_query_result
+    result.read()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 873, in read
+    self._read_ok_packet()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 880, in _read_ok_packet
+    self.insert_id = self.first_packet.read_length_coded_binary()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 292, in read_length_coded_binary
+    return unpack_int24(self.read(UNSIGNED_INT24_LENGTH))
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 161, in unpack_int24
+    return struct.unpack('B',n[0])[0] + (struct.unpack('B', n[1])[0] << 8) +\
+TypeError: a bytes-like object is required, not 'int'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/mobidea.py", line 83, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2892, in _execute
+    return self.database.execute_sql(sql, params, self.require_commit)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3748, in execute_sql
+    cursor.execute(sql, params or ())
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 117, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 187, in defaulterrorhandler
+    raise Error(errorclass, errorvalue)
+pymysql.err.Error: (<class 'TypeError'>, TypeError("a bytes-like object is required, not 'int'",))
+
+2017-12-15 14:19:08 
+Traceback (most recent call last):
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 112, in execute
+    result = self._query(query)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 230, in _query
+    conn.query(q)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 607, in query
+    self._affected_rows = self._read_query_result()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 691, in _read_query_result
+    result.read()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 873, in read
+    self._read_ok_packet()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 880, in _read_ok_packet
+    self.insert_id = self.first_packet.read_length_coded_binary()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 292, in read_length_coded_binary
+    return unpack_int24(self.read(UNSIGNED_INT24_LENGTH))
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 161, in unpack_int24
+    return struct.unpack('B',n[0])[0] + (struct.unpack('B', n[1])[0] << 8) +\
+TypeError: a bytes-like object is required, not 'int'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/mobidea.py", line 83, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2892, in _execute
+    return self.database.execute_sql(sql, params, self.require_commit)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3748, in execute_sql
+    cursor.execute(sql, params or ())
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/cursors.py", line 117, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/pymysql/connections.py", line 187, in defaulterrorhandler
+    raise Error(errorclass, errorvalue)
+pymysql.err.Error: (<class 'TypeError'>, TypeError("a bytes-like object is required, not 'int'",))
+
+2017-12-15 15:03:37 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 31, in start
+    print (root.getroot)
+AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'getroot'
+
+2017-12-15 15:06:31 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 31, in start
+    print (root.getroot())
+AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'getroot'
+
+2017-12-15 15:08:20 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 31, in start
+    root = ET.parse(raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 1196, in parse
+    tree.parse(source, parser)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/xml/etree/ElementTree.py", line 586, in parse
+    source = open(source, "rb")
+OSError: [Errno 63] File name too long: '<?xml version="1.0" encoding="utf-8"?>\n<offer_feed_response xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cakemarketing.com/affiliates/api/4/">\r\n  <success>true</success>\r\n  <row_count>4</row_count>\r\n  <offers>\r\n    <offer>\r\n      <offer_id>12320</offer_id>\r\n      <offer_contract_id>13968</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB] QuickFlirt /FR 25+ DOI</offer_name>\r\n      <vertical_name>Casual dating</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$3.75</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_34a55a74678ea0f46a185478d3410ed5.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/12320.png</thumbnail_image_url>\r\n      <description>HOT NEW dating site with a huge conversion potential!\r\n\r\nPixel fires on email confirmation.</description>\r\n      <restrictions>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Country: FR\r\n\r\nFree profile males 18+, but targeting an older demo will lead to greater back end conversions for the advertiser and increased payouts and caps for your efforts.\r\n\r\nPromotion Allowed: Web, Email, Search, SocialNet \r\nPromotion Not Allowed: RegPath, Host And Post / Whitelabel, Incentivized \r\n\r\nAll new publishers are capped at 100 leads/day to test until the advertiser can assess quality, once quality is determined, the cap will be lifted or increased accordingly. \r\nIf you go over this cap you risk forfeiting those commissions. \r\nSpeak with your AM if you wish for the cap to be setup in our system, if not you are expected to control this on your end.\r\n\r\nTablet/ipad traffic allowed</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>12360</offer_id>\r\n      <offer_contract_id>14010</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>Mobile TV /IN - Airtel</offer_name>\r\n      <vertical_name>Mobile content</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$0.64</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://162.243.217.139/sub1/index.php</preview_link>\r\n      <thumbnail_image_url />\r\n      <description>Post subscribing the user can watch tv channels and videos which are offered in the product. \r\n\r\nCarrier: Airtel\r\n\r\nFlow: The user lands on the consent page post clicking on the URL, where he or she is informed about the type of service and the pricepoint. The user has to just click on the "Yes" button on the landing page. </description>\r\n      <restrictions>Geo: India\r\n1) OS targeting: Android\r\n2) Browser exclusion: Safari, Blackberry, Opera, SEMC\r\n\r\nNo adult and incentive</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms />\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>42271</offer_id>\r\n      <offer_contract_id>52154</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[WEB+MOB] 123 Movies /International (50 GEOs)</offer_name>\r\n      <vertical_name>Entertainment</vertical_name>\r\n      <offer_status>\r\n        <status_id>2</status_id>\r\n        <status_name>Public</status_name>\r\n      </offer_status>\r\n      <payout>$20.80</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link>http://img.clickdealer.com/938x582_3e9282bdb088e3b0817cea25f81b6662.jpg</preview_link>\r\n      <thumbnail_image_url>https://eu1-us1.ckcdnassets.com/403/thumbs/42271.jpg</thumbnail_image_url>\r\n      <description>Start watching videos instantly!\r\nFlow: Credit card Submit</description>\r\n      <restrictions>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>GEOs and payouts:\r\nFI/NO/DK - $24.00\r\nHK/NL/AT - $20.80\r\nJP/NZ/CH/CL - $20.00\r\nIT - $17.60\r\nSE/BE/ES/AE/MC/IE/KR - $16.80\r\nQA/LU/LI/FO/AD/GL - $16.00\r\nPT/CZ/MT/ID/KW/PA/BH/CR/SK - $12.80\r\nGG/PY/OM/BS/KN/AG/TC/SI/EE/PL/GU/HN/BR/PE/EC/CO/UY - $8.00\r\nAR - $6.40\r\nDaily cap - 30 leads per offer\r\nNo incent\r\nNo cashback</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n    <offer>\r\n      <offer_id>44110</offer_id>\r\n      <offer_contract_id>54634</offer_contract_id>\r\n      <campaign_id xsi:nil="true" />\r\n      <offer_name>[MOB] 123SexStream /GR - [Cosmote, Vodafone, Wind]</offer_name>\r\n      <vertical_name>Erotic content, Carrier Billing</vertical_name>\r\n      <offer_status>\r\n        <status_id>3</status_id>\r\n        <status_name>Apply To Run</status_name>\r\n      </offer_status>\r\n      <payout>$2.40</payout>\r\n      <price_format>CPA</price_format>\r\n      <preview_link />\r\n      <thumbnail_image_url />\r\n      <description>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n</description>\r\n      <restrictions>X Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</restrictions>\r\n      <allowed_media_types />\r\n      <expiration_date xsi:nil="true" />\r\n      <tags />\r\n      <advertiser_extended_terms>Target Carrier\tCosmote, Vodafone, Wind (Telestet or TIM)\r\nFlow\tPIN / 3G &amp; WIFI\r\n\r\n\r\nX Voucher/ Coupon/ Deals Sites / Use of promo-codes /Loyalty/ Cashback\r\nX SMS Marketing, ie: users receive messages with URL\r\nX Viral Marketing, ie: share voucher to get cash or freebies\r\nX strictly prohibited auto-subscribing MSISDNs/i-frame traffics\r\nX Antivirus/Whatsapp\r\nX Wordings: Free, bonus, claim, win, won, UPDATE your device (in English or other languages)\r\nX Copyright/trademark materials, i.e Lidl, Auchan, Biedronka, BP, Sephora, Reserved, House, CCC, Netto, BLISKA, ORLEN\r\n</advertiser_extended_terms>\r\n      <hidden>false</hidden>\r\n    </offer>\r\n  </offers>\r\n</offer_feed_response>'
+
+2017-12-15 15:15:18 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 31, in start
+    print (root.getroot())
+AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'getroot'
+
+2017-12-28 20:06:32 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/clickdealer.py", line 133, in start
+    raise Exception('access avazu failed')
+Exception: access avazu failed
+
+2018-01-02 16:46:28 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 77, in run_task
+    token=login_info.token).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/glispa.py", line 42, in start
+    ThirdPartyOffer.insert(offer_data).execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3506, in execute
+    cursor = self._execute()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2891, in _execute
+    sql, params = self.sql()
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 3474, in sql
+    return self.compiler().generate_insert(self)
+  File "/Users/skk/virtualspace/newbidder_py3/lib/python3.6/site-packages/peewee.py", line 2069, in generate_insert
+    row_dict.keys(), key=operator.attrgetter('_sort_key'))
+AttributeError: 'str' object has no attribute '_sort_key'
+
+2018-01-07 13:43:54 
+Traceback (most recent call last):
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/single_task.py", line 72, in run_task
+    password=login_info.password).start()
+  File "/Users/skk/Desktop/GitHub/AdClickIO/affiliate/worker/yeahmobi.py", line 52, in start
+    raise Exception('access yeahmobi failed')
+Exception: access yeahmobi failed
+

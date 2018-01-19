@@ -1,0 +1,13 @@
+mongodb = {
+    "name": "gatekeeper",
+    "host": "localhost",
+    "port": "27017",
+}
+
+mysql = {
+    "name": "gatekeeper",
+    "host": "host",
+    "port": "3306",
+    "user": "monty",
+    "passwd": "monty"
+}
