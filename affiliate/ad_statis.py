@@ -56,8 +56,6 @@ class AdStatis():
         userIdText = []
         clickIds = []
         resAdStat = []
-        Conversions = dict()
-
         CampaignIds = []
         FlowIds = []
         OfferIds = []
@@ -65,7 +63,11 @@ class AdStatis():
         CountryIds = []
         TrafficSourceIds = []
         AffiliateNetworkIds = []
+
+        getOfferIdsByFlow = []
+
         userEventNum = dict()
+        Conversions = dict()
 
         CampaignMapList = dict()
         for data in res:
@@ -119,6 +121,9 @@ class AdStatis():
 
             if(len(str(redisData['OfferID'])) > 0 and int(redisData['OfferID']) > 0):
                 OfferIds.append(int(redisData['OfferID']))
+            else:
+                #OfferIds为空的时候，需要根据flow的配比设置offerId
+                getOfferIdsByFlow.append(int(redisData['FlowID']))
 
             if(len(str(redisData['TrafficSourceID'])) > 0 and int(redisData['TrafficSourceID']) > 0):
                 TrafficSourceIds.append(int(redisData['TrafficSourceID']))
@@ -128,6 +133,43 @@ class AdStatis():
 
             if(len(str(redisData['Country'])) > 0):
                 CountryIds.append(redisData['Country'])
+
+        #处理offerId为空的(nodejs搬过来的)
+        if (len(getOfferIdsByFlow) > 0):
+            sql = "SELECT  f.`id` AS flowId,p.`id` AS parentId, l.`id`,l.`name`,p2.`weight` ,f.`userId`\
+                FROM Flow f \
+                INNER JOIN `Rule2Flow` f2 ON f2.`flowId` = f.`id`\
+                INNER JOIN `Rule` r ON r.`id` = f2.`ruleId` \
+                INNER JOIN `Path2Rule` r2 ON r2.`ruleId`= r.`id`\
+                INNER JOIN `Path` p ON p.`id` = r2.`pathId`\
+                INNER JOIN `Offer2Path` p2 ON p2.`pathId` = p.`id` \
+                INNER JOIN `Offer` l ON l.`id`= p2.`offerId`\
+                WHERE  f2.`deleted`= 0 AND r.`deleted` = 0 \
+                AND r2.`deleted`= 0 AND p.`deleted` = 0  \
+                AND p2.`deleted` = 0 AND l.`deleted` = 0 \
+                AND f.`id` in (%s) AND p2.`weight` > 0 ORDER BY p2.`order` ASC" %(','.join(getOfferIdsByFlow))
+
+            print ("sql----------",sql)
+            getOfferIdsList = TrackingCampaign.execute_sql(sql)
+            print("getOfferIdsList:",getOfferIdsList)
+
+        sys.exit()
+        '''
+        SELECT  f.`id` AS flowId,p.`id` AS parentId, l.`id`,l.`name`,p2.`weight` ,f.`userId`
+        FROM Flow f 
+        INNER JOIN `Rule2Flow` f2 ON f2.`flowId` = f.`id`
+        INNER JOIN `Rule` r ON r.`id` = f2.`ruleId` 
+        INNER JOIN `Path2Rule` r2 ON r2.`ruleId`= r.`id`
+        INNER JOIN `Path` p ON p.`id` = r2.`pathId`
+        INNER JOIN `Offer2Path` p2 ON p2.`pathId` = p.`id` 
+        INNER JOIN `Offer` l ON l.`id`= p2.`offerId`
+        WHERE  f2.`deleted`= 0 AND r.`deleted` = 0 
+        AND r2.`deleted`= 0 AND p.`deleted` = 0  
+        AND p2.`deleted` = 0 AND l.`deleted` = 0 
+        AND f.`id` = 1180 AND f.`userId`= 14 AND p2.`weight` > 0 ORDER BY p2.`order` ASC;
+
+        根据offer取AffiliateNetworkId
+        '''
 
         TrackingCampaignList = dict()
         if (len(CampaignIds) > 0):
@@ -241,7 +283,7 @@ class AdStatis():
             modUserId = int(userId)%10
             usersList[modUserId][idText] = dict()
             usersList[modUserId][idText]['id'] = userId
-            #valueList[modUserId] = []
+            #offer为空的根据比例给一个
             valueList[modUserId].append(resAdStat[index])
             md5Key[modUserId].append(key)
         
@@ -489,7 +531,7 @@ class AdStatis():
         #清空字段
         stringData = ''
         #command = "mysqlimport -h ec2-18-220-153-39.us-east-2.compute.amazonaws.com -udev -p'55Te$ydFq' --fields-terminated-by='|' -f AdClickTool  adstatis_new_4 --local  /tmp/adstatis_new_4.tbl"  
-        command = "mysqlimport -h "+mysql_report['host']+" -u"+mysql_report['user']+" -p'"+mysql_report['passwd']+"' --fields-terminated-by='|'  -f  "+mysql_report['name']+"  "+table+"  --local  /tmp/"+table+".tbl"
+        command = "mysqlimport -h "+mysql_report['host']+" -u"+mysql_report['user']+" -p'"+mysql_report['passwd']+"' --fields-terminated-by='|'  -f  "+mysql_report['name']+"  --use-threads=10  --local  /tmp/"+table+".tbl"
         print ("command",command)
         try:
             return_code = subprocess.call(command, shell=True)

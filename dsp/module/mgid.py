@@ -331,5 +331,5 @@ if __name__ == '__main__':
     # print mgid.teaser_list
     # mgid.block_teaser('2400883', 0)
     # mgid.set_geotargeting()
-    mgid.block_widgets('468950', "5505504")
-    # mgid.play_widgets('468950', "5505504")
+    # mgid.block_widgets('468950', "5505504,5543809")
+    mgid.play_widgets('468950', "5505504,5543809")

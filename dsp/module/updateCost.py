@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print (BASE_DIR)
 sys.path.append(BASE_DIR + "/../")
 from affiliate.model.mysql_report import *
-from affiliate.model.mysql_model import AdCost, TrafficSource, TemplateTrafficSource, CampaignMap, TrackingCampaign
+from affiliate.model.mysql_model import *
 from dsp.module.mgid import Mgid
 from dsp.module.popcash import PopCash
 from dsp.module.popad import Popad
@@ -22,7 +22,10 @@ class UpdateCost(object):
             if reportDb.is_closed():
                 # print ("连接关闭")
                 reportDb.connect()
-            res = AdStatisLog4.select(AdStatisLog4.CampaignID).limit(1)
+            res = TotalInfo.select(TotalInfo.userid).where(TotalInfo.userid == 1).limit(1)
+            res2 = AdCost.select(AdCost.id).where(AdCost.id).limit(1)
+            # print ("AdStatisLog4", len(res), len(res2))
+            # temp1, temp2 = len(res), len(res2)
             # print ("AdStatisLog4", len(res))
             update_list = AdCost.select().where(
                 AdCost.updatecost == 1
@@ -55,6 +58,7 @@ class UpdateCost(object):
                         # print (temp, item.bid, item.updatebid)
                         self.update_bid(item, theircampain.TheirCampId)
                         # self.update_cost(visit)
+            time.sleep(1)
 
     def update_cost(self, id, userid, CampaignID, begintime, endtime, cost):
         table_name = eval("AdStatisLog" + str(userid % 10))
@@ -64,9 +68,9 @@ class UpdateCost(object):
         #     AdStatisLog4.Timestamp.between(1512127713263, 1512127719302))        
         # print ("update_cost", table_name, CampaignID, begintime, endtime)
         try:
-            if reportDb.is_closed():
-                print ("连接关闭")
-                reportDb.connect()
+            # if reportDb.is_closed():
+            #     print ("连接关闭")
+            #     reportDb.connect()
             total_visit = 0
             total_visit_obj = table_name.select(fn.Count(table_name.Visits)).where(
                 table_name.CampaignID == CampaignID, table_name.Timestamp.between(begintime, endtime)
@@ -99,7 +103,7 @@ class UpdateCost(object):
         except Exception as e:
             print(e)
             AdCost.update(updatecost=3, remark="cost更新失败").where(AdCost.id == id).execute()
-            print ("exit")
+            print ("")
             sys.exit()
 
     def update_bid(self, item, theircampid):
@@ -171,7 +175,7 @@ class UpdateCost(object):
             #
             #     except:
             #         raise Exception('error')
-            print (result)
+            # print (result)
             if result == "":
                 return
             if result:

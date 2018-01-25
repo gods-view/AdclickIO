@@ -23,7 +23,8 @@ from affiliate.model.mysql_report import *
 class PopCash:
     def __init__(self, apikey=''):
         self.cost_list = {}
-        self.apikey = "f0dd541062cffe022fed-1494250040-285e83f0c5e58506b1f0122554"
+        self.apikey = apikey
+        # "f0dd541062cffe022fed-1494250040-285e83f0c5e58506b1f0122554"
         self.headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -302,18 +303,20 @@ class PopCash:
     def website_switch(self, campaignid, operate, websiteid):
         url = config.get('popcash', 'switchWebsiteUrl') % (campaignid, self.apikey)
         # url = config.get('popcash', 'switchWebsiteUrl') % self.apikey
-        # print (url)
-        data = '{"append": true,"siteTargeting":' + str(operate) + ',"websitesIds": [' + websiteid + ']}'
+        print (url)
+        data = '{"append": true,"siteTargeting":' + str(operate) + ',"websitesIds":[' + websiteid + ']}'
+        # data = '{"append": true,"siteTargeting":' + str(operate) + ',"websitesIds":[170663,318227]}'
         # res, respond = HttpSpider().internal_post(url, data, timeout=300)
+        print (data)
         try:
             res, respond = HttpSpider().internal_post(url, data, timeout=300, headers=self.headers)
             if respond:
                 data = json.loads(respond)
-                # print (data)
+                print (data)
                 if "websites" in data.keys():
-                    if int(websiteid) in data["websites"]:
-                        # print ("success")
-                        return True, res
+                    # if int(websiteid) in data["websites"]:
+                    # print ("success")
+                    return True, res
                 return False, res
             else:
                 return False, res
@@ -328,4 +331,4 @@ if __name__ == '__main__':
     # popcash.campaigns()
     # popcash.open_campaigns('829')
     # popcash.close_campaigns('1037600')
-    popcash.website_switch(150489, 1, "193097")
+    # popcash.website_switch(156592, 2, "['170888', '359792', '90704', '5262', '15473', '285536', '400590', '380250', '377025', '312717', '9715', '347266', '111848', '127291', '127292', '27257', '376933', '236497', '377312', '49660', '95643', '373914', '61439', '90702', '90700', '216507', '58054', '72300', '389528', '403643', '52198', '401657', '95642', '221521', '86209', '118109', '381379', '44807', '30256', '41812', '401662', '354824', '231725', '0', '370872', '287692', '24794', '11374', '326817', '402903', '282289', '403425', '376588', '256223', '388541', '404109', '108560', '117986', '120356', '106522', '55445', '334959', '143301', '105968', '372525', '335029', '332204', '60611', '333030', '365623', '86020', '124002', '400503', '51842', '294405', '403827', '247234', '49372', '398733', '123204', '50670', '223489', '367248', '208223', '209723', '86215', '318228', '372324', '388088', '332207', '386682', '333761', '121879', '159231', '108771', '71964', '369367', '322867', '76240', '52199', '90698', '34097', '394048', '51623', '138719', '379413', '400348', '361085', '117294', '86214', '366809', '205616', '38189', '2260', '166983', '94064', '170663', '236840', '86212', '214405']")

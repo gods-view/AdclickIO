@@ -37,8 +37,8 @@ class GetCost(object):
             templateId = item.trafficTemplateId
             # print (userid, name, token, account, password, templateId)
             self.get_data(userid, name, token, account, password, templateId)
-        timer = threading.Timer(900.0, self.get_object)
-        timer.start()
+        # timer = threading.Timer(900.0, self.get_object)
+        # timer.start()
 
     def get_data(self, userid, name, token, account, password, templateId):
         # 拿到该流量源对应的模板

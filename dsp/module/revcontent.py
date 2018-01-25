@@ -162,8 +162,9 @@ class Revcontent:
                 # timer.start()
 
     def add_widget(self, id, operate, websiteid):
-        self.update_type(operate)
+        self.update_type(id, operate)
         url = config.get('revcontent', 'addwidget') % id
+        # {"id": "32,35,57"}
         data = {"id": websiteid}
         try:
             res, respond = HttpSpider().internal_post(url, json.dumps(data), timeout=300, headers=self.headers)
@@ -180,7 +181,7 @@ class Revcontent:
             return False, e
 
     def remove_widget(self, id, operate, websiteid):
-        self.update_type(operate)
+        self.update_type(id, operate)
         url = config.get('revcontent', 'removewidget') % id
         data = {"id": websiteid}
         try:
@@ -197,8 +198,8 @@ class Revcontent:
             print ("error")
             return False, e
 
-    def update_type(self, operate):
-        url = config.get('revcontent', 'updatetype') % 336195
+    def update_type(self, id, operate):
+        url = config.get('revcontent', 'updatetype') % id
         data = {"status": operate}
         res, respond = HttpSpider().internal_post(url, json.dumps(data), timeout=300, headers=self.headers)
         if respond:
@@ -211,7 +212,7 @@ class Revcontent:
                 return False
 
     def get_widget(self):
-        url = config.get('revcontent', 'getwidget') % 336195
+        url = config.get('revcontent', 'getwidget') % id
         # data = {"campaign_ids": [2124110, 2118504]}
         res, respond = HttpSpider().internal_get(url, timeout=300, headers=self.headers)
         if respond:
@@ -269,6 +270,6 @@ if __name__ == '__main__':
 
     # revcontent.add_widget(336195, "exclude")
     # revcontent.add_widget(336195, "include")
-    # revcontent.remove_widget(336195, "include")
+    revcontent.remove_widget(336195, "include")
     # revcontent.add_widget()
-    revcontent.get_widget()
+    # revcontent.get_widget()

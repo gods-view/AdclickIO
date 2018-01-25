@@ -190,7 +190,7 @@ class ExoClick:
         url = config.get('exoclick', 'updateZone') % (campaignid, targeting_type)
         print (url)
         # data = {"targeting_type": targeting_type, "body_collection_strings_array": [domains]}
-        data = [domains]
+        data = domains
         # print (data)
         try:
             res, respond = HttpSpider().internal_put(url, json.dumps(data), timeout=300, headers=self.headers)

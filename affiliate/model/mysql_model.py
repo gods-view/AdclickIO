@@ -189,6 +189,7 @@ class Offer(BaseModel):
     name = CharField(max_length=256, null=False)
     payoutMode = IntegerField(null=False)
     payoutValue = FloatField(null=False)
+
     class Meta:
         db_table = "Offer"
         index = ('id', True)

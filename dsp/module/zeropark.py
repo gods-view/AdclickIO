@@ -153,8 +153,8 @@ class Zeropark:
             if respond:
 
                 data = json.loads(respond)
-                print (data)
-                print (data["value"])
+                # print (data)
+                # print (data["value"])
                 return True, res
             else:
                 return False, res
@@ -191,7 +191,7 @@ class Zeropark:
             if respond:
                 data = json.loads(respond)
                 if "state" in data.keys():
-                    if data["state"]["state"] == "PAUSED":
+                    if data["state"]["state"] == "ACTIVE":
                         # print ("success")
                         return True, res
                 # print (data)
@@ -205,28 +205,40 @@ class Zeropark:
     def resume_targets(self, id, target_name):
         url = config.get('zeropark', 'resumetargets') % id
         data = {"hash": target_name}
-        res, respond = HttpSpider().internal_post(url, data, timeout=300, headers=self.headers)
-        if respond:
-            try:
+        try:
+            res, respond = HttpSpider().internal_post(url, data, timeout=300, headers=self.headers)
+            if respond:
                 data = json.loads(respond)
+                if "state" in data.keys():
+                    if data["state"]["state"] == "PAUSED":
+                        # print ("success")
+                        return True, res
                 # print (data)
-                return True
-            except Exception as e:
-                print ("error")
-                return False
+                return False, res
+            else:
+                return False, res
+        except Exception as e:
+            print ("error")
+            return False, e
 
     def pause_targets(self, id, target_name):
         url = config.get('zeropark', 'pausetargets') % id
         data = {"hash": target_name}
-        res, respond = HttpSpider().internal_post(url, data, timeout=300, headers=self.headers)
-        if respond:
-            try:
+        try:
+            res, respond = HttpSpider().internal_post(url, data, timeout=300, headers=self.headers)
+            if respond:
                 data = json.loads(respond)
+                if "state" in data.keys():
+                    if data["state"]["state"] == "PAUSED":
+                        # print ("success")
+                        return True, res
                 # print (data)
-                return True
-            except Exception as e:
-                print ("error")
-                return False
+                return False, res
+            else:
+                return False, res
+        except Exception as e:
+            print ("error")
+            return False, e
 
     def get_target(self, id):
         url = config.get('zeropark', 'gettarget') % id + "interval=THIS_YEAR"
@@ -295,9 +307,9 @@ if __name__ == '__main__':
     # zeropark.updatebid("ebd0f9c0-b239-11e6-a9c8-0e0b03568723", 0.0001)
     # zeropark.campaigns()
     # zeropark.get_target("cb3862c0-a26b-11e7-86a7-0e06c6fba698")
-    zeropark.pause_target("ebd0f9c0-b239-11e6-a9c8-0e0b03568723", "uniform-fey-91bLaBX5")
-    zeropark.resume_target("ebd0f9c0-b239-11e6-a9c8-0e0b03568723", "uniform-fey-91bLaBX5")
+    # zeropark.pause_target("ebd0f9c0-b239-11e6-a9c8-0e0b03568723", "uniform-fey-91bLaBX5")
+    # zeropark.resume_target("ebd0f9c0-b239-11e6-a9c8-0e0b03568723", "uniform-fey-91bLaBX5")
     # zeropark.resume_targets("cb3862c0-a26b-11e7-86a7-0e06c6fba698", ["yankee-pus-ig4rn8fR", "whiskey-gey-4x1KVHrY"])
-    # zeropark.pause_targets("cb3862c0-a26b-11e7-86a7-0e06c6fba698", ["uniform-fey-91bLaBX5", "whiskey-gey-4x1KVHrY"])
+    zeropark.pause_targets("cb3862c0-a26b-11e7-86a7-0e06c6fba698", ["uniform-fey-91bLaBX5", "whiskey-gey-4x1KVHrY"])
     # zeropark.play_campaigns("cb3862c0-a26b-11e7-86a7-0e06c6fba698")
     # zeropark.pause_campaigns("cb3862c0-a26b-11e7-86a7-0e06c6fba698")

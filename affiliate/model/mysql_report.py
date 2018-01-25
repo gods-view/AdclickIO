@@ -6,11 +6,11 @@ from affiliate.model.config import mysql_report
 import time
 
 reportDb = MySQLDatabase(mysql_report['name'],
-                   host=mysql_report['host'],
-                   port=int(mysql_report['port']),
-                   user=mysql_report['user'],
-                   passwd=mysql_report['passwd']
-                   )
+                         host=mysql_report['host'],
+                         port=int(mysql_report['port']),
+                         user=mysql_report['user'],
+                         passwd=mysql_report['passwd']
+                         )
 
 
 class BaseModel(Model):
@@ -18,6 +18,7 @@ class BaseModel(Model):
 
     class Meta:
         database = reportDb
+
 
 class AdStatisLog0(BaseModel):
     UserID = CharField(null=False, default=0)
@@ -77,6 +78,7 @@ class AdStatisLog0(BaseModel):
         db_table = "adstatis_new_0"
         index = (('KeysMD5', True))
 
+
 class AdStatisLog1(BaseModel):
     UserID = CharField(null=False, default=0)
     CampaignID = CharField(null=False, default=0)
@@ -134,6 +136,7 @@ class AdStatisLog1(BaseModel):
     class Meta:
         db_table = "adstatis_new_1"
         index = (('KeysMD5', True))
+
 
 class AdStatisLog2(BaseModel):
     UserID = CharField(null=False, default=0)
@@ -193,6 +196,7 @@ class AdStatisLog2(BaseModel):
         db_table = "adstatis_new_2"
         index = (('KeysMD5', True))
 
+
 class AdStatisLog3(BaseModel):
     UserID = CharField(null=False, default=0)
     CampaignID = CharField(null=False, default=0)
@@ -250,6 +254,7 @@ class AdStatisLog3(BaseModel):
     class Meta:
         db_table = "adstatis_new_3"
         index = (('KeysMD5', True))
+
 
 class AdStatisLog4(BaseModel):
     UserID = CharField(null=False, default=0)
@@ -309,6 +314,7 @@ class AdStatisLog4(BaseModel):
         db_table = "adstatis_new_4"
         index = (('KeysMD5', True))
 
+
 class AdStatisLog5(BaseModel):
     UserID = CharField(null=False, default=0)
     CampaignID = CharField(null=False, default=0)
@@ -366,6 +372,7 @@ class AdStatisLog5(BaseModel):
     class Meta:
         db_table = "adstatis_new_5"
         index = (('KeysMD5', True))
+
 
 class AdStatisLog6(BaseModel):
     UserID = CharField(null=False, default=0)
@@ -425,6 +432,7 @@ class AdStatisLog6(BaseModel):
         db_table = "adstatis_new_6"
         index = (('KeysMD5', True))
 
+
 class AdStatisLog7(BaseModel):
     UserID = CharField(null=False, default=0)
     CampaignID = CharField(null=False, default=0)
@@ -482,6 +490,7 @@ class AdStatisLog7(BaseModel):
     class Meta:
         db_table = "adstatis_new_7"
         index = (('KeysMD5', True))
+
 
 class AdStatisLog8(BaseModel):
     UserID = CharField(null=False, default=0)
@@ -541,6 +550,7 @@ class AdStatisLog8(BaseModel):
         db_table = "adstatis_new_8"
         index = (('KeysMD5', True))
 
+
 class AdStatisLog9(BaseModel):
     UserID = CharField(null=False, default=0)
     CampaignID = CharField(null=False, default=0)
@@ -598,6 +608,15 @@ class AdStatisLog9(BaseModel):
     class Meta:
         db_table = "adstatis_new_9"
         index = (('KeysMD5', True))
+
+
+class TotalInfo(BaseModel):
+    id = IntegerField(null=False)
+    userid = IntegerField(null=False)
+
+    class Meta:
+        db_table = "total_info"
+
 
 reportDb.connect()
 

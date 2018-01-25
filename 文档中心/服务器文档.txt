@@ -18,9 +18,6 @@ user: 'dev',
 password: '55Te$ydFq',
 database: 'AdClickTool',
 
-
-ssh ec2-user@ec2-52-14-148-52.us-east-2.compute.amazonaws.com
-
 redis
 "host": "adclick-jp-001.082pif.0001.apne1.cache.amazonaws.com,
 "port": "6379",
@@ -89,7 +86,7 @@ redis
 "host": "eventcache.bq8jfj.ng.0001.use2.cache.amazonaws.com",
 "port": "6379",
 
-¹ÙÍø
+¹ÙÍøºÍTrackingtokens
 ssh ec2-user@ec2-52-199-222-93.ap-northeast-1.compute.amazonaws.com
 Ä¿Â¼ /adeaz/sites/webs/www.newbidder.com/code/
 
@@ -129,8 +126,4 @@ bin/zookeeper-server-start.sh config/zookeeper.properties &
 
 ssh ec2-user@ec2-18-216-161-240.us-east-2.compute.amazonaws.com
 
-export PATH=
-
-
-offerlist port : 18088
 

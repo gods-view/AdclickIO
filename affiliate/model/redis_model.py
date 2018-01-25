@@ -28,7 +28,12 @@ class Redis():
     #获取具体值
     def getAdStatValue(self,key):
         names = ['VisitsFlag','ClicksFlag','ConversionsFlag','UserID','CampaignID','CampaignName','FlowID','FlowName','LanderID','LanderName','OfferID','OfferName','OfferUrl','OfferCountry','AffiliateNetworkID','AffilliateNetworkName','TrafficSourceID','TrafficSourceName','Language','Model','Country','City','Region','ISP','MobileCarrier','Domain','DeviceType','Brand','OS','OSVersion','Browser','BrowserVersion','ConnectionType','Timestamp','Visits','Clicks','Conversions','Cost','Revenue','Impressions','KeysMD5','V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','tsCampaignId','tsWebsiteId','ip','PostbackTimestamp','VisitTimestamp','ExternalID','ClickID','TransactionID','ConnectionType','VisitorIP','VisitorReferrer','tsCampaignName']
-        res = r.hmget(key,*names)
+        try:
+            res = r.hmget(key,*names)
+        except Exception as e:
+            res = dict()
+            return res
+
         dataList = dict()
         num = len(names)
         for index in range(num):
